@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Human Anatomy Model</title>
+    <title>3D人体解剖模型</title>
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
@@ -17,20 +17,22 @@
             </div>
             <div class="col-md-3">
                 <div class="control-panel">
-                    <h3>Anatomy Controls</h3>
+                    <h3>解剖控制面板</h3>
                     <div class="layer-controls">
-                        <h4>Anatomical Systems</h4>
+                        <h4>解剖系统</h4>
                         <div class="system-toggles">
-                            <button class="btn btn-outline-primary" data-system="skeletal">Skeletal System</button>
-                            <button class="btn btn-outline-primary" data-system="muscular">Muscular System</button>
-                            <button class="btn btn-outline-primary" data-system="nervous">Nervous System</button>
-                            <button class="btn btn-outline-primary" data-system="circulatory">Circulatory System</button>
+                            <button class="btn btn-outline-primary" data-system="skeletal">骨骼系统</button>
+                            <button class="btn btn-outline-primary" data-system="muscular">肌肉系统</button>
+                            <button class="btn btn-outline-primary" data-system="nervous">神经系统</button>
+                            <button class="btn btn-outline-primary" data-system="circulatory">循环系统</button>
+                            <button class="btn btn-outline-primary" data-system="digestive">消化系统</button>
+                            <button class="btn btn-outline-primary" data-system="respiratory">呼吸系统</button>
                         </div>
                     </div>
                     <div class="info-panel">
-                        <h4>Selected Organ</h4>
+                        <h4>选中的器官</h4>
                         <div id="organ-info">
-                            <p>Click on an organ to see details</p>
+                            <p>点击器官查看详细信息</p>
                         </div>
                     </div>
                 </div>
