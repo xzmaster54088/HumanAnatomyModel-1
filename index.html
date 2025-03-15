@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Human Anatomy Model</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <div id="scene-container"></div>
+            </div>
+            <div class="col-md-3">
+                <div class="control-panel">
+                    <h3>Anatomy Controls</h3>
+                    <div class="layer-controls">
+                        <h4>Anatomical Systems</h4>
+                        <div class="system-toggles">
+                            <button class="btn btn-outline-primary" data-system="skeletal">Skeletal System</button>
+                            <button class="btn btn-outline-primary" data-system="muscular">Muscular System</button>
+                            <button class="btn btn-outline-primary" data-system="nervous">Nervous System</button>
+                            <button class="btn btn-outline-primary" data-system="circulatory">Circulatory System</button>
+                        </div>
+                    </div>
+                    <div class="info-panel">
+                        <h4>Selected Organ</h4>
+                        <div id="organ-info">
+                            <p>Click on an organ to see details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/AnatomyData.js"></script>
+    <script src="js/SceneManager.js"></script>
+    <script src="js/Controls.js"></script>
+    <script src="js/UIManager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
