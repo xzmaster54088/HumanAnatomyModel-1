@@ -23,6 +23,7 @@
 
     <!-- 添加 Babylon.js -->
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="js/AnatomyScene.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             // 获取canvas容器
@@ -32,53 +33,20 @@
             canvas.style.width = '100%';
             canvas.style.height = '100%';
 
-            // 创建 Babylon.js 引擎
-            const engine = new BABYLON.Engine(canvas, true);
-
-            // 创建场景
-            const createScene = function() {
-                const scene = new BABYLON.Scene(engine);
-                scene.clearColor = new BABYLON.Color3(0, 0, 0);
-
-                // 添加相机
-                const camera = new BABYLON.ArcRotateCamera(
-                    "camera",
-                    0, Math.PI / 3,
-                    10,
-                    BABYLON.Vector3.Zero(),
-                    scene
-                );
-                camera.attachControl(canvas, true);
-
-                // 添加光源
-                const light = new BABYLON.HemisphericLight(
-                    "light",
-                    new BABYLON.Vector3(0, 1, 0),
-                    scene
-                );
-
-                // 添加测试盒子
-                const box = BABYLON.MeshBuilder.CreateBox("box", {}, scene);
-                box.position.y = 1;
-
-                // 添加调试日志
-                console.log('Scene created successfully');
-                return scene;
-            }
-
-            // 创建并运行场景
             try {
-                const scene = createScene();
-                engine.runRenderLoop(function() {
-                    scene.render();
+                // 创建和运行解剖场景
+                const anatomyScene = new AnatomyScene(canvas);
+                anatomyScene.createScene();
+                anatomyScene.run();
+
+                // 添加器官选中事件监听
+                document.addEventListener('organSelected', function(event) {
+                    const organName = event.detail.organName;
+                    console.log('Selected organ:', organName);
+                    // 这里可以添加更新UI的代码
                 });
 
-                // 处理窗口大小变化
-                window.addEventListener('resize', function() {
-                    engine.resize();
-                });
-
-                console.log('Babylon.js scene is running');
+                console.log('Anatomy scene is running');
             } catch (error) {
                 console.error('Error creating scene:', error);
             }
