@@ -16,13 +16,14 @@ class SceneManager {
         this.container.appendChild(this.renderer.domElement);
 
         // Setup camera
-        this.camera.position.set(0, 0, 10);
+        this.camera.position.set(0, 0, 5);
+        this.camera.lookAt(0, 0, 0);
 
         // Add lights
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        const ambientLight = new THREE.AmbientLight(0x404040, 2);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(1, 1, 1);
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
         directionalLight2.position.set(-1, -1, -1);
         this.scene.add(ambientLight);
         this.scene.add(directionalLight);
@@ -66,19 +67,28 @@ class SceneManager {
         // Main heart chamber
         const mainHeart = new THREE.Mesh(
             new THREE.SphereGeometry(0.4, 32, 32),
-            new THREE.MeshPhongMaterial({ color: 0xff0000 })
+            new THREE.MeshPhongMaterial({ 
+                color: 0xff0000,
+                shininess: 30
+            })
         );
 
         // Additional chambers
         const chamber1 = new THREE.Mesh(
             new THREE.SphereGeometry(0.2, 32, 32),
-            new THREE.MeshPhongMaterial({ color: 0xff0000 })
+            new THREE.MeshPhongMaterial({ 
+                color: 0xff0000,
+                shininess: 30
+            })
         );
         chamber1.position.set(0.3, 0.2, 0);
 
         const chamber2 = new THREE.Mesh(
             new THREE.SphereGeometry(0.2, 32, 32),
-            new THREE.MeshPhongMaterial({ color: 0xff0000 })
+            new THREE.MeshPhongMaterial({ 
+                color: 0xff0000,
+                shininess: 30
+            })
         );
         chamber2.position.set(-0.3, 0.2, 0);
 
@@ -97,14 +107,20 @@ class SceneManager {
 
         // Main brain mass
         const mainBrain = new THREE.Mesh(
-            new THREE.TorusKnotGeometry(0.3, 0.1, 64, 16),
-            new THREE.MeshPhongMaterial({ color: 0xffcccc })
+            new THREE.SphereGeometry(0.3, 32, 32),
+            new THREE.MeshPhongMaterial({ 
+                color: 0xffcccc,
+                shininess: 20
+            })
         );
 
         // Cerebellum
         const cerebellum = new THREE.Mesh(
             new THREE.SphereGeometry(0.2, 32, 16),
-            new THREE.MeshPhongMaterial({ color: 0xffcccc })
+            new THREE.MeshPhongMaterial({ 
+                color: 0xffcccc,
+                shininess: 20
+            })
         );
         cerebellum.position.set(0, -0.3, 0);
 
@@ -119,10 +135,14 @@ class SceneManager {
 
     createLiverModel() {
         const liverGeometry = new THREE.Mesh(
-            new THREE.CapsuleGeometry(0.3, 0.4, 4, 8),
-            new THREE.MeshPhongMaterial({ color: 0x800000 })
+            new THREE.SphereGeometry(0.3, 32, 16),
+            new THREE.MeshPhongMaterial({ 
+                color: 0x800000,
+                shininess: 15
+            })
         );
         liverGeometry.position.set(0.8, 0, 0);
+        liverGeometry.scale.set(1.5, 1, 0.8);
         liverGeometry.name = 'liver';
 
         this.organs.set('liver', liverGeometry);
@@ -131,10 +151,14 @@ class SceneManager {
 
     createStomachModel() {
         const stomachGeometry = new THREE.Mesh(
-            new THREE.CapsuleGeometry(0.25, 0.5, 4, 8),
-            new THREE.MeshPhongMaterial({ color: 0xf08080 })
+            new THREE.SphereGeometry(0.25, 32, 16),
+            new THREE.MeshPhongMaterial({ 
+                color: 0xf08080,
+                shininess: 25
+            })
         );
         stomachGeometry.position.set(-0.8, 0, 0);
+        stomachGeometry.scale.set(1, 1.5, 0.8);
         stomachGeometry.rotation.z = Math.PI / 4;
         stomachGeometry.name = 'stomach';
 
@@ -147,17 +171,25 @@ class SceneManager {
 
         // Left lung
         const leftLung = new THREE.Mesh(
-            new THREE.CapsuleGeometry(0.2, 0.6, 4, 8),
-            new THREE.MeshPhongMaterial({ color: 0xffa07a })
+            new THREE.SphereGeometry(0.2, 32, 16),
+            new THREE.MeshPhongMaterial({ 
+                color: 0xffa07a,
+                shininess: 20
+            })
         );
         leftLung.position.set(0.4, 0.7, 0);
+        leftLung.scale.set(1, 1.8, 0.8);
 
         // Right lung
         const rightLung = new THREE.Mesh(
-            new THREE.CapsuleGeometry(0.2, 0.6, 4, 8),
-            new THREE.MeshPhongMaterial({ color: 0xffa07a })
+            new THREE.SphereGeometry(0.2, 32, 16),
+            new THREE.MeshPhongMaterial({ 
+                color: 0xffa07a,
+                shininess: 20
+            })
         );
         rightLung.position.set(-0.4, 0.7, 0);
+        rightLung.scale.set(1, 1.8, 0.8);
 
         lungsGroup.add(leftLung);
         lungsGroup.add(rightLung);
