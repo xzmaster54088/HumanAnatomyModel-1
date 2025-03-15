@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D人体解剖模型</title>
     <link rel="stylesheet" href="styles/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/examples/js/controls/OrbitControls.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        // Add error handling for script loading
+        window.addEventListener('error', function(e) {
+            console.error('Script loading error:', e);
+        }, true);
+    </script>
 </head>
 <body>
     <div class="container-fluid">
@@ -40,6 +44,13 @@
         </div>
     </div>
 
+    <!-- Load scripts at the end of body -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js" 
+            onload="console.log('Three.js loaded successfully')" 
+            onerror="console.error('Failed to load Three.js')"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/examples/js/controls/OrbitControls.js" 
+            onload="console.log('OrbitControls loaded successfully')" 
+            onerror="console.error('Failed to load OrbitControls')"></script>
     <script src="js/AnatomyData.js"></script>
     <script src="js/SceneManager.js"></script>
     <script src="js/Controls.js"></script>
